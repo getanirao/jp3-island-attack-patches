@@ -1,0 +1,70 @@
+# Jurassic Park III: Island Attack (GBA) — Control & QoL Patches
+
+A community ROM patch for *Jurassic Park III: Island Attack* (Konami, 2001, GBA)
+that fixes the game's most commonly criticized control issue: the unreliable
+double-tap-to-dash mechanic.
+
+No documented disassembly or ROM hack previously existed for this game. All
+offsets below were found via manual reverse engineering with Ghidra, BizHawk,
+and mGBA.
+
+## What's fixed
+
+### 1. Sprint: double-tap → hold R + direction
+The original game required quickly double-tapping a directional input to
+dash. Reviewers consistently called this out as a major control flaw:
+
+> "This becomes a difficulty when trying to press diagonally twice in order
+> to run from Spinosaurus... The GBA control pad can be very sensitive when
+> trying to tap, and it's nearly impossible for gamers with large hands."
+
+This patch replaces the double-tap detection with a simple, responsive
+**hold R + direction to sprint** scheme, working in both isometric (freeroam)
+and 2D (cross-section) stages.
+
+### 2. Inventory cycling: L only
+The R shoulder button no longer cycles inventory items, freeing it
+exclusively for sprint. L still cycles inventory normally.
+
+## Applying the patch
+
+1. Obtain a legally-dumped copy of `Jurassic Park III - Island Attack (USA).gba`
+   (this repo does not include or link to ROM files)
+2. Apply the byte changes listed in [`PATCHES.md`](PATCHES.md) using a hex
+   editor (e.g. [HexEd.it](https://hexed.it)), or run the included
+   [`patch.py`](patch.py) script
+3. Run [`gbafix`](https://github.com/devkitPro/gba-tools) on the output to
+   fix the ROM header checksum (required for real hardware / EverDrive use)
+
+```
+python patch.py "Jurassic Park III - Island Attack (USA).gba" patched.gba
+gbafix patched.gba
+```
+
+## Status
+
+| Patch | Status |
+|---|---|
+| Sprint (hold R + direction) | ✅ Complete, tested |
+| Inventory cycling (L only) | ✅ Complete, tested |
+| Item crate hold-to-open | 🔬 Investigated, deferred (see notes) |
+| Stun gun / damage balance | 📋 Planned |
+
+See [`PATCHES.md`](PATCHES.md) for full technical documentation, byte-level
+patch details, and notes on what's been investigated for future work.
+
+## Tools used
+
+- [Ghidra](https://ghidra-sre.org/) with the
+  [pudii/gba-ghidra-loader](https://github.com/pudii/gba-ghidra-loader)
+  extension
+- [BizHawk](https://tasvideos.org/BizHawk) (RAM Search, Lua scripting)
+- [mGBA](https://mgba.io/) (debugger)
+- [HexEd.it](https://hexed.it) (browser-based hex editor)
+
+## Disclaimer
+
+This repository contains no copyrighted ROM data — only documented byte
+offsets and replacement values for a ROM you must legally own and dump
+yourself. Jurassic Park III: Island Attack is © Konami / Universal /
+Amblin Entertainment. This is an unofficial, non-commercial fan patch.
