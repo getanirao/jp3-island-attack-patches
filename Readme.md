@@ -45,10 +45,10 @@ gbafix patched.gba
 
 | Patch | Status |
 |---|---|
-| Sprint (hold R + direction) | ✅ Complete, tested |
-| Inventory cycling (L only) | ✅ Complete, tested |
-| Item crate hold-to-open | 🔬 Investigated, deferred (see notes) |
-| Stun gun / damage balance | 📋 Planned |
+| Sprint (hold R + direction) |  Complete, tested |
+| Inventory cycling (L only) |  Complete, tested |
+| Item crate hold-to-open |  Investigated, deferred (see notes) |
+| Stun gun / damage balance |  Planned |
 
 See [`PATCHES.md`](PATCHES.md) for full technical documentation, byte-level
 patch details, and notes on what's been investigated for future work.
