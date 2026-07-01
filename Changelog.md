@@ -7,11 +7,10 @@
 - Disabled R-shoulder inventory cycling so R is free for sprint;
   L still cycles inventory normally
 - Documented the entity/HP/combat code structure for future patches
-  (see `Patches.md` "Investigated, deferred" section)
+  (see `Patches.md` "Planned" section)
 
 ## Planned
 
-- Item crate hold-to-open (deferred — requires locating crate-specific
+- Item crate hold-to-open (planned — requires locating crate-specific
   entity init code, separate from the shared damage system)
 - Tutorial text correction (deferred — custom font encoding not yet mapped)
-- Player damage-taken rebalance (planned, not started)

@@ -52,8 +52,7 @@ and CRC32 before writing changes.
 |---|---|
 | Sprint (hold R + direction) |  Complete, tested |
 | Inventory cycling (L only) |  Complete, tested |
-| Item crate hold-to-open |  Investigated, deferred (see notes) |
-| Stun gun / damage balance |  Planned |
+| Item crate hold-to-open |  Planned (investigated; see notes) |
 
 See [`Patches.md`](Patches.md) for full technical documentation, byte-level
 patch details, and notes on what's been investigated for future work.

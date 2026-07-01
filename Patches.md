@@ -83,7 +83,7 @@ D1 80 00 20 70 47
 
 ---
 
-## Investigated, deferred
+## Planned
 
 ### Item crate hold-to-open
 Goal: change the tap-repeatedly-on-crate interaction to hold-B.
@@ -112,20 +112,13 @@ A future attempt should start from the crate's *spawn/init* code (to find
 its unique entity-type ID) rather than the shared damage-application path,
 since the generic code is reused too broadly to safely modify in place.
 
+## Investigated, deferred
+
 ### Tutorial text edit
 "Press the +Control Pad twice in one direction to dash!" is now
 inaccurate after Patch 2. Text search for ASCII bytes returned no matches;
 the game appears to use a custom font/tile encoding rather than standard
 ASCII. Not yet located. Low priority (cosmetic).
-
-### Stun gun / dinosaur damage balance
-Per external reviews, dinosaurs deal disproportionate damage to the player
-after being engaged. Weapons (flare gun, tranquilizer) do not deal
-permanent damage to dinosaurs by design — they stun/anger only. A fix
-here would mean editing player-damage-taken values, which (per the crate
-investigation above) likely live in the same broadly-shared HP/combat
-system. Not yet attempted; treat with the same caution as the crate
-mechanic.
 
 ---
 
