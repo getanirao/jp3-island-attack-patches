@@ -3,15 +3,14 @@
 Patch script for Jurassic Park III: Island Attack (USA) [GBA]
 
 Applies the control/QoL patches documented in Patches.md:
-  1. Disables R-shoulder inventory cycling (frees R for sprint)
-  2. Replaces the double-tap-to-dash mechanic with hold-R-plus-direction
+  1. Applies ROM header fixups matching gbafix output
+  2. Disables R-shoulder inventory cycling (frees R for sprint)
+  3. Replaces the double-tap-to-dash mechanic with hold-R-plus-direction
 
 Usage:
     python Patch.py <input.gba> <output.gba>
 
-After patching, run `gbafix` on the output file to fix the ROM header
-checksum (required for real hardware / EverDrive use):
-    gbafix output.gba
+The output includes the corrected ROM header checksum.
 """
 
 import binascii
@@ -19,9 +18,21 @@ import sys
 
 EXPECTED_SOURCE_SIZE = 0x800000
 EXPECTED_SOURCE_CRC32 = 0x1E7048D2
-EXPECTED_PATCHED_CRC32 = 0x4669F5BC
+EXPECTED_PATCHED_CRC32 = 0x64E60724
 
 PATCHES = [
+    {
+        "name": "ROM header fixup",
+        "offset": 0xB4,
+        "expected": bytes.fromhex("00"),
+        "replacement": bytes.fromhex("80"),
+    },
+    {
+        "name": "ROM header checksum",
+        "offset": 0xBD,
+        "expected": bytes.fromhex("4A"),
+        "replacement": bytes.fromhex("CA"),
+    },
     {
         "name": "Inventory cycling (disable R)",
         "offset": 0xFCD8,
@@ -124,7 +135,7 @@ def main():
         f.write(data)
 
     print(f"\nDone. Wrote patched ROM to: {out_path}")
-    print("Remember to run `gbafix` on the output before using on real hardware.")
+    print("The output includes the corrected ROM header checksum.")
 
 
 if __name__ == "__main__":

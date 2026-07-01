@@ -40,11 +40,13 @@ exclusively for sprint. L still cycles inventory normally.
      ```
    - **Manual hex edit:** Apply the byte changes listed in
      [`Patches.md`](Patches.md) using a hex editor.
-3. Run [`gbafix`](https://github.com/devkitPro/gba-tools) on the output to
-   fix the ROM header checksum (required for real hardware / EverDrive use).
+3. If editing the ROM manually, run [`gbafix`](https://github.com/devkitPro/gba-tools)
+   on the output to fix the ROM header checksum (required for real hardware / EverDrive use).
+   The **BPS patch and Python script already include the updated header checksum**,
+   so no extra steps are needed for those methods.
 
 Expected clean ROM CRC32: `1E7048D2`. The Python script verifies the ROM size
-and CRC32 before writing changes.
+and CRC32 before writing changes. Expected patched ROM CRC32: `64E60724`.
 
 ## Status
 

@@ -6,6 +6,22 @@ for this loader).
 
 ---
 
+## Output header fixups
+
+The distributed BPS patch and `Patch.py` output include the same two
+header-byte updates produced by `gbafix` for the patched ROM:
+
+| Offset | Original | Patched |
+|---|---|---|
+| `0x000000B4` | `00` | `80` |
+| `0x000000BD` | `4A` | `CA` |
+
+These do not affect gameplay logic, but they keep the patched output valid
+for real hardware / flash cart use. Expected patched ROM CRC32:
+`64E60724`.
+
+---
+
 ## Patch 1 — Disable R-shoulder inventory cycling
 
 **Effect:** R shoulder no longer cycles inventory. L still cycles forward
@@ -119,8 +135,6 @@ since the generic code is reused too broadly to safely modify in place.
 inaccurate after Patch 2. Text search for ASCII bytes returned no matches;
 the game appears to use a custom font/tile encoding rather than standard
 ASCII. Not yet located. Low priority (cosmetic).
-
----
 
 ## Key reference addresses
 
