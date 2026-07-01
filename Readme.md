@@ -30,16 +30,18 @@ exclusively for sprint. L still cycles inventory normally.
 
 1. Obtain a legally-dumped copy of `Jurassic Park III - Island Attack (USA).gba`
    (this repo does not include or link to ROM files)
-2. Apply the byte changes listed in [`PATCHES.md`](PATCHES.md) using a hex
-   editor (e.g. [HexEd.it](https://hexed.it)), or run the included
-   [`patch.py`](patch.py) script
+2. Apply the patch using one of the following methods:
+   - **BPS patch (recommended):** Open [`jp3-qol-patches.bps`](jp3-qol-patches.bps)
+     in [FLIPS](https://github.com/Alcaro/Flips), select your ROM, and save the
+     patched copy.
+   - **Python script:** Run the included [`patch.py`](patch.py) script:
+     ```
+     python patch.py "Jurassic Park III - Island Attack (USA).gba" patched.gba
+     ```
+   - **Manual hex edit:** Apply the byte changes listed in
+     [`PATCHES.md`](PATCHES.md) using a hex editor.
 3. Run [`gbafix`](https://github.com/devkitPro/gba-tools) on the output to
-   fix the ROM header checksum (required for real hardware / EverDrive use)
-
-```
-python patch.py "Jurassic Park III - Island Attack (USA).gba" patched.gba
-gbafix patched.gba
-```
+   fix the ROM header checksum (required for real hardware / EverDrive use).
 
 ## Status
 
