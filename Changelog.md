@@ -7,7 +7,7 @@
 - Disabled R-shoulder inventory cycling so R is free for sprint;
   L still cycles inventory normally
 - Documented the entity/HP/combat code structure for future patches
-  (see `PATCHES.md` "Investigated, deferred" section)
+  (see `Patches.md` "Investigated, deferred" section)
 
 ## Planned
 

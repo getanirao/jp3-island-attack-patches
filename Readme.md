@@ -34,14 +34,17 @@ exclusively for sprint. L still cycles inventory normally.
    - **BPS patch (recommended):** Open [`jp3-qol-patches.bps`](jp3-qol-patches.bps)
      in [FLIPS](https://github.com/Alcaro/Flips), select your ROM, and save the
      patched copy.
-   - **Python script:** Run the included [`patch.py`](patch.py) script:
+   - **Python script:** Run the included [`Patch.py`](Patch.py) script:
      ```
-     python patch.py "Jurassic Park III - Island Attack (USA).gba" patched.gba
+     python Patch.py "Jurassic Park III - Island Attack (USA).gba" patched.gba
      ```
    - **Manual hex edit:** Apply the byte changes listed in
-     [`PATCHES.md`](PATCHES.md) using a hex editor.
+     [`Patches.md`](Patches.md) using a hex editor.
 3. Run [`gbafix`](https://github.com/devkitPro/gba-tools) on the output to
    fix the ROM header checksum (required for real hardware / EverDrive use).
+
+Expected clean ROM CRC32: `1E7048D2`. The Python script verifies the ROM size
+and CRC32 before writing changes.
 
 ## Status
 
@@ -52,7 +55,7 @@ exclusively for sprint. L still cycles inventory normally.
 | Item crate hold-to-open |  Investigated, deferred (see notes) |
 | Stun gun / damage balance |  Planned |
 
-See [`PATCHES.md`](PATCHES.md) for full technical documentation, byte-level
+See [`Patches.md`](Patches.md) for full technical documentation, byte-level
 patch details, and notes on what's been investigated for future work.
 
 ## Tools used
