@@ -48,6 +48,14 @@ exclusively for sprint. L still cycles inventory normally.
 Expected clean ROM CRC32: `1E7048D2`. The Python script verifies the ROM size
 and CRC32 before writing changes. Expected patched ROM CRC32: `64E60724`.
 
+## Reporting bugs
+
+Please report patch problems with the
+[Bug Report issue form](https://github.com/getanirao/jp3-island-attack-patches/issues/new?template=bug_report.yml).
+Include the patch method, clean ROM CRC32, patched ROM CRC32,
+emulator/hardware, and whether you tested from a fresh boot or an old save
+state. Do not upload or link to ROM files.
+
 ## Status
 
 | Patch | Status |

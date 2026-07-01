@@ -1,0 +1,97 @@
+name: Bug report
+description: Report a problem with the patch
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping test the patch. Please do not upload or link to ROM files.
+        CRC32 values are enough to verify whether the correct ROM and patch output were used.
+
+  - type: dropdown
+    id: patch-method
+    attributes:
+      label: Patch method
+      description: How did you apply the patch?
+      options:
+        - BPS patch
+        - Python script
+        - Manual hex edit
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: clean-rom-crc32
+    attributes:
+      label: Clean ROM CRC32
+      description: Expected for the supported USA ROM: 1E7048D2
+      placeholder: "1E7048D2"
+    validations:
+      required: true
+
+  - type: input
+    id: patched-rom-crc32
+    attributes:
+      label: Patched ROM CRC32
+      description: Expected for this patch release: 64E60724
+      placeholder: "64E60724"
+    validations:
+      required: true
+
+  - type: input
+    id: emulator-hardware
+    attributes:
+      label: Emulator or hardware
+      description: Include emulator name/version, flash cart, console, or setup details.
+      placeholder: "mGBA 0.10.5 on Windows 11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: boot-state
+    attributes:
+      label: Boot state
+      description: Did you test from a clean boot or from an old save state?
+      options:
+        - Fresh boot
+        - In-game save
+        - Old emulator save state
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest sequence of actions that causes the problem.
+      placeholder: |
+        1. Start a new game
+        2. Enter the first isometric area
+        3. Hold R + Right
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: "Holding R + direction should sprint."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      placeholder: "The player only walks, or sprint never engages."
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra notes
+      description: Screenshots, short videos, save context, controller mapping, or other details.
