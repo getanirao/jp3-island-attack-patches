@@ -26,6 +26,36 @@ and 2D (cross-section) stages.
 The R shoulder button no longer cycles inventory items, freeing it
 exclusively for sprint. L still cycles inventory normally.
 
+## Proof: stock ROM vs patched
+
+Captured in BizHawk from identical save states. Each screenshot has a live
+on-screen GBA controller drawn from the actual input state, so the
+`INPUT:` label reflects what the game really received. Both images in a pair
+hold the input for the same number of frames.
+
+**Stock ROM — R + direction does not sprint.** The character ends at the
+*identical position* whether R is held or not; R only swaps the item box
+to the gold item (its vanilla inventory behavior):
+
+| Hold → (walk), 150 frames | Hold R + → , 150 frames |
+|:---:|:---:|
+| <img src="screenshots/proof/vanilla_walk_150.png" width="400" alt="vanilla: walking 150 frames"> | <img src="screenshots/proof/vanilla_sprint_150.png" width="400" alt="vanilla: R+direction 150 frames — same spot, gold item box"> |
+
+**Patched — R + direction sprints.** From the same save state, walking stays
+at the crash site while R + → reaches new terrain in the same 150 frames:
+
+| Hold → (walk), 150 frames | Hold R + → (sprint), 150 frames |
+|:---:|:---:|
+| <img src="screenshots/proof/patched_walk_150.png" width="400" alt="patched: walking 150 frames"> | <img src="screenshots/proof/patched_sprint_150.png" width="400" alt="patched: sprinting 150 frames — much farther"> |
+
+R alone still does not move the character (sprint requires a direction):
+
+| Stock: R alone, 60 frames | Patched: R alone, 60 frames |
+|:---:|:---:|
+| <img src="screenshots/proof/vanilla_R_only_60.png" width="400" alt="vanilla: R held — no movement, item box swapped"> | <img src="screenshots/proof/patched_R_only_60.png" width="400" alt="patched: R held — no movement, no item swap"> |
+
+90-frame pairs and navigation screenshots are in [`screenshots/proof/`](screenshots/proof/).
+
 ## Applying the patch
 
 1. Obtain a legally-dumped copy of `Jurassic Park III - Island Attack (USA).gba`
